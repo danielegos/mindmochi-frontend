@@ -1,6 +1,10 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'services/api_service.dart'; // Import mindmochi_django API
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 void main() {
   runApp(MyApp());
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: 'MindMochi',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 34, 255, 108)),
@@ -45,7 +49,7 @@ class MyAppState extends ChangeNotifier {
   }
 }
 
-// ...
+// Homepage
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -66,6 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
       case 1:
         page = FavoritesPage();
+      case 2:
+        page = NewScreen();
+      case 3:
+        page = CellBiology();
+      case 4:
+        page = ItemList();
+      case 5:
+        page = ImagePage();
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -89,6 +101,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.favorite),
                       label: Text('Favorites'),
                     ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.car_crash), 
+                      label: Text('New Page')
+                      ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.biotech), 
+                      label: Text('Cell Biology')
+                      ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.wifi), 
+                      label: Text('Django API Test')
+                      ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.image), 
+                      label: Text('Django Image API Test')
+                      ),
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
@@ -182,15 +210,15 @@ class GeneratorPage extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NewScreen()),
-              );
-            },
-            child: Text("Go to New Screen"),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => NewScreen()),
+          //     );
+          //   },
+          //   child: Text("Go to New Screen"),
+          // ),
 
 
         ],
@@ -248,12 +276,12 @@ class NewScreen extends StatelessWidget {
           children: [
             Text("Welcome to the new screen!"),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context); // Navigate back
-              },
-              child: Text("Go Back"),
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.pop(context); // Navigate back
+            //   },
+            //   child: Text("Go Back"),
+            // ),
           ],
         ),
       ),
@@ -261,3 +289,128 @@ class NewScreen extends StatelessWidget {
   }
 }
 
+// Create infographic about the cell
+// create new screen
+class CellBiology extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Cell Biology")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Let's learn about cell biology!"),
+            SizedBox(height: 20),
+            
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Create API test page
+class ItemList extends StatefulWidget {
+  @override
+  _ItemListState createState() => _ItemListState();
+}
+
+class _ItemListState extends State<ItemList> {
+  late Future<List<Item>> items;
+
+  @override
+  void initState() {
+    super.initState();
+    items = ApiService().fetchItems();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Items'),
+      ),
+      body: FutureBuilder<List<Item>>(
+        future: items,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text('No items found'));
+          } else {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                final item = snapshot.data![index];
+                return ListTile(
+                  title: Text(item.name),
+                  subtitle: Text(item.description),
+                );
+              },
+            );
+          }
+        },
+      ),
+    );
+  }
+}
+
+// Create Image API test page
+class ImagePage extends StatefulWidget {
+  @override
+  _ImagePageState createState() => _ImagePageState();
+}
+
+class _ImagePageState extends State<ImagePage> {
+  late Future<List<ApiImage>> images;  // Use ApiImage instead of Image
+
+  Future<List<ApiImage>> fetchImages() async {
+    final response = await http.get(Uri.parse('http://127.0.0.1:8000/api/images/'));
+    
+    if (response.statusCode == 200) {
+      List data = json.decode(response.body);
+      return data.map((item) => ApiImage.fromJson(item)).toList();  // Use ApiImage
+    } else {
+      throw Exception('Failed to load images');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    images = fetchImages();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Images")),
+      body: FutureBuilder<List<ApiImage>>(
+        future: images,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text("No images found."));
+          }
+
+          List<ApiImage> images = snapshot.data!;
+          return ListView.builder(
+            itemCount: images.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(images[index].title),
+                leading: Image.network(images[index].imageUrl),  // Use Image.network here
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
