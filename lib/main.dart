@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 34, 255, 108)),
         ),
         home: MyHomePage(),
       ),
@@ -181,6 +181,18 @@ class GeneratorPage extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NewScreen()),
+              );
+            },
+            child: Text("Go to New Screen"),
+          ),
+
+
         ],
       ),
     );
@@ -223,3 +235,29 @@ class BigCard extends StatelessWidget {
     );
   }
 }
+
+// create new screen
+class NewScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("New Screen")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Welcome to the new screen!"),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context); // Navigate back
+              },
+              child: Text("Go Back"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
