@@ -1,9 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'services/api_service.dart'; // Import mindmochi_django API
-// import 'package:http/http.dart' as http;
-// import 'dart:convert';
 
 // Import screens
 import 'screens/cellbiology.dart';
@@ -74,19 +71,26 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (selectedIndex) {
       case 0:
         page = GeneratorPage();
+        break;
       case 1:
         page = FavoritesPage();
+        break;
       case 2:
         page = NewScreen();
+        break;
       case 3:
         page = CellBiology();
+        break;
       case 4:
         page = ItemList();
+        break;
       case 5:
         page = ImagePage();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
+
 
     // ...
     
@@ -216,15 +220,15 @@ class GeneratorPage extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => NewScreen()),
-          //     );
-          //   },
-          //   child: Text("Go to New Screen"),
-          // ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NewScreen()),
+              );
+            },
+            child: Text("Go to New Screen"),
+          ),
 
 
         ],
