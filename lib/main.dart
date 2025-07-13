@@ -7,6 +7,7 @@ import 'screens/cellbiology.dart';
 import 'screens/newscreen.dart';
 import 'screens/api_item.dart';
 import 'screens/api_image.dart';
+import 'screens/aminoacids.dart';
 
 
 void main() {
@@ -87,6 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 5:
         page = ImagePage();
         break;
+      case 6:
+        page = AminoAcids();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -126,6 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     NavigationRailDestination(
                       icon: Icon(Icons.image), 
                       label: Text('Django Image API Test')
+                      ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.schema_outlined), 
+                      label: Text('Amino Acids')
                       ),
                   ],
                   selectedIndex: selectedIndex,
