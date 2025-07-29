@@ -35,7 +35,7 @@
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Unit 1',
+                          'Cell Biology Crash Course',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w500,
@@ -63,7 +63,7 @@
                         ),
                         SizedBox(height: 40),
                         Text(
-                          'DNA is stored as a circular chromosome in prokaryotes and is organized into separate linear chromosomes in eukaryotes.',
+                          'Deoxyribonucleic acid (DNA) is the biological information which encodes all known life in the universe. Its code consists in four nucleotide bases Adenine, Cytosine, Thymine, Guanine. Each is dubbed with the first letter of its name, A, C, T, G.',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black,
@@ -189,7 +189,7 @@
                               height: 50,
                               decoration: BoxDecoration(
                                 color: Colors.blue,
-                                shape: BoxShape.circle,
+                                shape:BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.black26,
@@ -222,7 +222,7 @@
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'DNA is stored as a circular chromosome in prokaryotes and is organized into separate linear chromosomes in eukaryotes.',
+                          'Eukaryotic and prokaryotic cells differ in important ways.',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black,
@@ -243,14 +243,14 @@
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: Text(
-                                    'Coding DNA',
+                                    'Prokaryotes',
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: Text(
-                                    'Noncoding DNA',
+                                    'Eukaryotes',
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -260,11 +260,11 @@
                               children: [
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Contains genes'),
+                                  child: Text('Circular DNA in the cytoplasm'),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Does not contain genes'),
+                                  child: Text('DNA is stored as linear chromosomes within the nucleus'),
                                 ),
                               ],
                             ),
@@ -272,38 +272,56 @@
                               children: [
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Needed to produce proteins, tRNA, and other biomolecules.'),
+                                  child: Text('[talk about cell membrane]'),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Does not code for proteins or other biomolecules.'),
+                                  child: Text('[talk about cell membrane]'),
                                 ),
                               ],
                             ),
+                            
                             TableRow(
                               children: [
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Relatively small portion of genome.'),
+                                  child: Text('Always unicellular'),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Much larger portion of genome.'),
+                                  child: Text('Some are unicellular and others are multicellular'),
                                 ),
                               ],
                             ),
+
+                                                        TableRow(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text('[size]'),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text('[size]'),
+                                ),
+                              ],
+                            ),
+
+
                             TableRow(
                               children: [
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('-'*20),
+                                  child: Text('Cells do not differentiate'),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text('Involved in maintaining chromosome integrity and regulating gene expression.'),
+                                  child: Text('Multicellular eukaryotes can have cell differentiation'),
                                 ),
                               ],
                             ),
+
+                            
                           ],
                         ),
                         SizedBox(height: 20),

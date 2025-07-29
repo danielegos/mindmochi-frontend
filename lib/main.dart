@@ -8,7 +8,11 @@ import 'screens/newscreen.dart';
 import 'screens/api_item.dart';
 import 'screens/api_image.dart';
 import 'screens/aminoacids.dart';
+import 'screens/cellbiologyminigame.dart';
+import 'screens/usmedschoolmap.dart';
 
+
+// TODO: Delete the Home and Favorites pages, if you can 
 
 void main() {
   runApp(MyApp());
@@ -77,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = FavoritesPage();
         break;
       case 2:
-        page = NewScreen();
+        page = MedSchoolMatcherPage();
         break;
       case 3:
         page = CellBiology();
@@ -91,6 +95,12 @@ class _MyHomePageState extends State<MyHomePage> {
       case 6:
         page = AminoAcids();
         break;
+      case 7:
+        page = CellBiologyMinigame();
+        break;
+      // case 8:
+      //   page = USMedSchoolMapScreen();
+      //   break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -117,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     NavigationRailDestination(
                       icon: Icon(Icons.car_crash), 
-                      label: Text('New Page')
+                      label: Text('Med School Prereq Checker')
                       ),
                     NavigationRailDestination(
                       icon: Icon(Icons.biotech), 
@@ -135,6 +145,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.schema_outlined), 
                       label: Text('Amino Acids')
                       ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.brightness_low_sharp), 
+                      label: Text('Cell Biology Mini Game')
+                      ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.brightness_low_sharp), 
+                    //   label: Text('USMedSchoolMap')
+                    //   ),
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
@@ -232,10 +250,10 @@ class GeneratorPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NewScreen()),
+                MaterialPageRoute(builder: (context) => MedSchoolMatcherPage()),
               );
             },
-            child: Text("Go to New Screen"),
+            child: Text("Go to Med School Prereq Checker"),
           ),
 
 
