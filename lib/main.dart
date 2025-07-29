@@ -77,30 +77,30 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         page = GeneratorPage();
         break;
+      // case 1:
+      //   page = FavoritesPage();
+      //   break;
       case 1:
-        page = FavoritesPage();
-        break;
-      case 2:
         page = MedSchoolMatcherPage();
         break;
-      case 3:
+      case 2:
         page = CellBiology();
         break;
-      case 4:
+      case 3:
         page = ItemList();
         break;
-      case 5:
+      case 4:
         page = ImagePage();
         break;
-      case 6:
+      case 5:
         page = AminoAcids();
         break;
-      case 7:
+      case 6:
         page = CellBiologyMinigame();
         break;
-      // case 8:
-      //   page = USMedSchoolMapScreen();
-      //   break;
+      case 7:
+        page = USMedSchoolMapScreen();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -121,10 +121,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.home),
                       label: Text('Home'),
                     ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.favorite),
-                      label: Text('Favorites'),
-                    ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.favorite),
+                    //   label: Text('Favorites'),
+                    // ),
                     NavigationRailDestination(
                       icon: Icon(Icons.car_crash), 
                       label: Text('Med School Prereq Checker')
@@ -149,10 +149,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.brightness_low_sharp), 
                       label: Text('Cell Biology Mini Game')
                       ),
-                    // NavigationRailDestination(
-                    //   icon: Icon(Icons.brightness_low_sharp), 
-                    //   label: Text('USMedSchoolMap')
-                    //   ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.brightness_low_sharp), 
+                      label: Text('USMedSchoolMap')
+                      ),
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
@@ -178,33 +178,33 @@ class _MyHomePageState extends State<MyHomePage> {
 
 // ...
 
-class FavoritesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+// class FavoritesPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     var appState = context.watch<MyAppState>();
 
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('No favorites yet.'),
-      );
-    }
+//     if (appState.favorites.isEmpty) {
+//       return Center(
+//         child: Text('No favorites yet.'),
+//       );
+//     }
 
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
-    );
-  }
-}
+//     return ListView(
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.all(20),
+//           child: Text('You have '
+//               '${appState.favorites.length} favorites:'),
+//         ),
+//         for (var pair in appState.favorites)
+//           ListTile(
+//             leading: Icon(Icons.favorite),
+//             title: Text(pair.asLowerCase),
+//           ),
+//       ],
+//     );
+//   }
+// }
 
 
 class GeneratorPage extends StatelessWidget {
@@ -224,37 +224,58 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //Image: MedMochi logo
+          Center(
+            child: Image.asset(
+              'assets/amino_acids/proline.png',
+              width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
+              height: 200,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Text("Image not found."),
+            ),
+          ),
+          SizedBox(height: 20),
+
+
           BigCard(pair: pair),
+
+          // BigCard(pair: pair),
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite();
-                },
-                icon: Icon(icon),
-                label: Text('Like'),
-              ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  appState.getNext();
-                },
-                child: Text('Next'),
-              ),
+                
+
+
+
+              Text("Select a module from the menu to get started!"),
+
+              // ElevatedButton.icon(
+              //   onPressed: () {
+              //     appState.toggleFavorite();
+              //   },
+              //   icon: Icon(icon),
+              //   label: Text('Like'),
+              // ),
+              // SizedBox(width: 10),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     appState.getNext();
+              //   },
+              //   child: Text('Next'),
+              // ),
             ],
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MedSchoolMatcherPage()),
-              );
-            },
-            child: Text("Go to Med School Prereq Checker"),
-          ),
+          // SizedBox(height: 20),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => MedSchoolMatcherPage()),
+          //     );
+          //   },
+          //   child: Text("Go to Med School Prereq Checker"),
+          // ),
 
 
         ],
@@ -291,9 +312,16 @@ class BigCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Text(
-          pair.asLowerCase, 
+          // pair.asLowerCase,
+          "MedMochi", 
           style: style,
-          semanticsLabel: "${pair.first} ${pair.second}",  
+
+
+                    
+
+     
+     
+
         ),
       ),
     );

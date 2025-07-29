@@ -21,7 +21,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  # url_launcher: ^6.2.5
+  url_launcher: ^6.2.5
 
   flutter_lints: ^2.0.0
 

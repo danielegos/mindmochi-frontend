@@ -7,9 +7,9 @@ class CellBiologyMinigame extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cell Biology Minigame',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.teal,
+      // ),
       home: Scaffold(
         appBar: AppBar(title: Text('Drag to the Organelle')),
         body: CellMinigame(),
@@ -27,12 +27,12 @@ class _CellMinigameState extends State<CellMinigame> {
   String _feedbackMessage = '';
   bool _answered = false;
 
-  final String correctAnswer = 'mitochondria';
+  final String correctAnswer = 'Mitochondria';
 
   Widget _buildOrganelleTarget(String label) {
     return DragTarget<String>(
-      onWillAccept: (data) => true,
-      onAccept: (data) {
+      onWillAcceptWithDetails: (data) => true,
+      onAcceptWithDetails: (data) {
         setState(() {
           if (data == correctAnswer) {
             _feedbackMessage = '✅ Correct!';
@@ -49,7 +49,7 @@ class _CellMinigameState extends State<CellMinigame> {
           margin: EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: Colors.teal, width: 2),
+            border: Border.all(color: const Color.fromARGB(255, 0, 0, 0), width: 2),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
@@ -65,7 +65,7 @@ class _CellMinigameState extends State<CellMinigame> {
 
   Widget _buildDraggableCircle() {
     return Draggable<String>(
-      data: 'mitochondria', // answer encoded in the draggable
+      data: 'Mitochondria', // answer encoded in the draggable
       feedback: _circle(),
       childWhenDragging: Opacity(opacity: 0.4, child: _circle()),
       child: _circle(),

@@ -44,6 +44,8 @@
                           ),
                         ),
                         SizedBox(height: 8),
+                        
+
                         Text(
                           'Overview: This unit covers basic cell biology concepts.',
                           style: TextStyle(
@@ -61,7 +63,29 @@
                             decoration: TextDecoration.none,
                           ),
                         ),
-                        SizedBox(height: 40),
+                        SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                ),
+
+
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 4,
+                  margin: EdgeInsets.all(16),
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+
                         Text(
                           'Deoxyribonucleic acid (DNA) is the biological information which encodes all known life in the universe. Its code consists in four nucleotide bases Adenine, Cytosine, Thymine, Guanine. Each is dubbed with the first letter of its name, A, C, T, G.',
                           style: TextStyle(
