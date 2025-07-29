@@ -113,12 +113,22 @@ class _MyHomePageState extends State<MyHomePage> {
         return Scaffold(
           body: Row(
             children: [
+             
+
               SafeArea(
+
                 child: NavigationRail(
                   extended: constraints.maxWidth >= 600,
                   destinations: [
                     NavigationRailDestination(
-                      icon: Icon(Icons.home),
+                      icon: Image.asset(
+                          'assets/logo/mm_logo.png',
+                          // width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
+                          height: 30,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) => Text("Image not found."),
+                        ),                      
+                      
                       label: Text('Home'),
                     ),
                     // NavigationRailDestination(
@@ -227,7 +237,7 @@ class GeneratorPage extends StatelessWidget {
           //Image: MedMochi logo
           Center(
             child: Image.asset(
-              'assets/amino_acids/proline.png',
+              'assets/logo/mm_logo.png',
               width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
               height: 200,
               fit: BoxFit.contain,
