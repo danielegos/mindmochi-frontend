@@ -10,6 +10,8 @@ import 'screens/api_image.dart';
 import 'screens/aminoacids.dart';
 import 'screens/cellbiologyminigame.dart';
 import 'screens/usmedschoolmap.dart';
+import 'screens/functionalgroups.dart';
+import 'screens/iupacpractice.dart';
 
 
 // TODO: Delete the Home and Favorites pages, if you can 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'MindMochi',
+        title: 'MedMochi',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 34, 255, 108)),
@@ -80,25 +82,30 @@ class _MyHomePageState extends State<MyHomePage> {
       // case 1:
       //   page = FavoritesPage();
       //   break;
+      // case 1:
+      //   page = MedSchoolMatcherPage();
+      //   break;
+      // case 2:
+      //   page = CellBiology();
+      //   break;
+      // case 3:
+      //   page = ItemList();
+      //   break;
+      // case 4:
+      //   page = ImagePage();
+      //   break;
       case 1:
-        page = MedSchoolMatcherPage();
-        break;
-      case 2:
-        page = CellBiology();
-        break;
-      case 3:
-        page = ItemList();
-        break;
-      case 4:
-        page = ImagePage();
-        break;
-      case 5:
         page = AminoAcids();
         break;
-      case 6:
-        page = CellBiologyMinigame();
-        break;
-      case 7:
+      // case 6:
+      //   page = CellBiologyMinigame();
+      //   break;
+
+      case 2:
+        page = FunctionalGroups();
+      case 3:
+        page = IupacPractice();
+      case 4:
         page = USMedSchoolMapScreen();
         break;
       default:
@@ -122,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   destinations: [
                     NavigationRailDestination(
                       icon: Image.asset(
-                          'assets/logo/mm_logo.png',
+                          'logo/mm_logo.png',
                           // width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
                           height: 30,
                           fit: BoxFit.contain,
@@ -135,32 +142,40 @@ class _MyHomePageState extends State<MyHomePage> {
                     //   icon: Icon(Icons.favorite),
                     //   label: Text('Favorites'),
                     // ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.car_crash), 
+                    //   label: Text('Med School Prereq Checker')
+                    //   ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.biotech), 
+                    //   label: Text('Cell Biology')
+                    //   ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.wifi), 
+                    //   label: Text('Django API Test')
+                    //   ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.image), 
+                    //   label: Text('Django Image API Test')
+                    //   ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.car_crash), 
-                      label: Text('Med School Prereq Checker')
+                      icon: Icon(Icons.line_axis), 
+                      label: Text('Amino Acid Quiz')
+                      ),
+                    // NavigationRailDestination(
+                    //   icon: Icon(Icons.brightness_low_sharp), 
+                    //   label: Text('Cell Biology Mini Game')
+                    //   ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.hexagon_outlined), 
+                      label: Text('Functional Group Quiz')
                       ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.biotech), 
-                      label: Text('Cell Biology')
+                      icon: Icon(Icons.abc), 
+                      label: Text('IUPAC Naming Quiz')
                       ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.wifi), 
-                      label: Text('Django API Test')
-                      ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.image), 
-                      label: Text('Django Image API Test')
-                      ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.schema_outlined), 
-                      label: Text('Amino Acids')
-                      ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.brightness_low_sharp), 
-                      label: Text('Cell Biology Mini Game')
-                      ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.brightness_low_sharp), 
+                      icon: Icon(Icons.school), 
                       label: Text('USMedSchoolMap')
                       ),
                   ],
@@ -237,7 +252,7 @@ class GeneratorPage extends StatelessWidget {
           //Image: MedMochi logo
           Center(
             child: Image.asset(
-              'assets/logo/mm_logo.png',
+              'logo/mm_logo.png',
               width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
               height: 200,
               fit: BoxFit.contain,

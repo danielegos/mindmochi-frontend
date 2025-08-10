@@ -1,18 +1,13 @@
-//
-// TODO: Edit charged amino acid pngs!
-//
-
-
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class AminoAcids extends StatefulWidget {
+class IupacPractice extends StatefulWidget {
   @override
-  _AminoAcidsState createState() => _AminoAcidsState();
+  _IupacPracticeState createState() => _IupacPracticeState();
 }
 
-class _AminoAcidsState extends State<AminoAcids> {
-  final List<Map<String, dynamic>> aminoAcids = [
+class _IupacPracticeState extends State<IupacPractice> {
+  final List<Map<String, dynamic>> iupacExamples = [
     {'names': ['Glycine'], 'three': 'Gly', 'one': 'G', 'image': 'glycine.png'},
     {'names': ['Alanine'], 'three': 'Ala', 'one': 'A', 'image': 'alanine.png'},
     {'names': ['Valine'], 'three': 'Val', 'one': 'V', 'image': 'valine.png'},
@@ -39,8 +34,8 @@ class _AminoAcidsState extends State<AminoAcids> {
   String feedback = "";
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController threeController = TextEditingController();
-  TextEditingController oneController = TextEditingController();
+  // TextEditingController threeController = TextEditingController();
+  // TextEditingController oneController = TextEditingController();
 
   @override
   void initState() {
@@ -50,37 +45,37 @@ class _AminoAcidsState extends State<AminoAcids> {
 
   void _generateNewQuestion() {
     final random = Random();
-    final index = random.nextInt(aminoAcids.length);
-    final newQuestion = aminoAcids[index];
+    final index = random.nextInt(iupacExamples.length);
+    final newQuestion = iupacExamples[index];
 
     setState(() {
       currentQuestion = newQuestion;
       feedback = "";
       nameController.clear();
-      threeController.clear();
-      oneController.clear();
+      // threeController.clear();
+      // oneController.clear();
     });
   }
 
   void _checkAnswers() {
     final nameInput = nameController.text.trim().toLowerCase();
-    final threeInput = threeController.text.trim().toLowerCase();
-    final oneInput = oneController.text.trim().toLowerCase();
+    // final threeInput = threeController.text.trim().toLowerCase();
+    // final oneInput = oneController.text.trim().toLowerCase();
 
     final List<String> validNames = (currentQuestion!['names'] as List<dynamic>)
         .map((n) => n.toString().toLowerCase())
         .toList();
 
     final correct =
-        validNames.contains(nameInput) &&
-        threeInput == currentQuestion!['three']!.toLowerCase() &&
-        oneInput == currentQuestion!['one']!.toLowerCase();
+        validNames.contains(nameInput);
+        // &&
+        // threeInput == currentQuestion!['three']!.toLowerCase() &&
+        // oneInput == currentQuestion!['one']!.toLowerCase();
 
     setState(() {
       feedback = correct ? "✅ Correct!" : "❌ Try Again!";
     });
 
-    // Changed conditional to true so it always resets the question
     if (true) {
       Future.delayed(Duration(seconds: 2), () {
         _generateNewQuestion();
@@ -93,7 +88,7 @@ class _AminoAcidsState extends State<AminoAcids> {
     if (currentQuestion == null) return Center(child: CircularProgressIndicator());
 
     return Scaffold(
-      appBar: AppBar(title: Text("Amino Acid Quiz")),
+      appBar: AppBar(title: Text("IUPAC Naming Quiz")),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(16.0),
@@ -118,19 +113,19 @@ class _AminoAcidsState extends State<AminoAcids> {
               ),
               SizedBox(height: 16),
 
-              Text("Three-letter Code:"),
-              TextField(
-                controller: threeController,
-                decoration: InputDecoration(hintText: "e.g. Gly"),
-              ),
-              SizedBox(height: 16),
+              // Text("Three-letter Code:"),
+              // TextField(
+              //   controller: threeController,
+              //   decoration: InputDecoration(hintText: "e.g. Gly"),
+              // ),
+              // SizedBox(height: 16),
 
-              Text("One-letter Code:"),
-              TextField(
-                controller: oneController,
-                decoration: InputDecoration(hintText: "e.g. G"),
-              ),
-              SizedBox(height: 24),
+              // Text("One-letter Code:"),
+              // TextField(
+              //   controller: oneController,
+              //   decoration: InputDecoration(hintText: "e.g. G"),
+              // ),
+              // SizedBox(height: 24),
 
               Center(
                 child: ElevatedButton(
