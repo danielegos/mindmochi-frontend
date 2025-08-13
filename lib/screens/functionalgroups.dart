@@ -31,20 +31,33 @@ class _FunctionalGroupsState extends State<FunctionalGroups> {
     {'names': ['Orthoester'], 'image': 'orthoester.png'},
     {'names': ['Orthocarbonate Ester'], 'image': 'orthocarbonate_ester.png'},
     {'names': ['Carboxylic Anhydride'], 'image': 'carboxylic_anhydride.png'},
+    {'names': ['Amide', 'Carboxamide'], 'image': 'amide.png'},
+    {'names': ['Amidine'], 'image': 'amidine.png'},
+    {'names': ['Guanidine'], 'image': 'guanidine.png'},
+    {'names': ['Amine'], 'image': 'amine.png'},
+    {'names': ['Imine'], 'image': 'imine.png'},
+    {'names': ['Imide'], 'image': 'imide.png'},
+    {'names': ['Azide'], 'image': 'azide.png'},
+    {'names': ['Azo'], 'image': 'azo.png'},
+    {'names': ['Cyanate'], 'image': 'cyanate.png'},
+    {'names': ['Isocyanate'], 'image': 'isocyanate.png'},
+    {'names': ['Nitrate'], 'image': 'nitrate.png'},
+    {'names': ['Nitrile'], 'image': 'nitrile.png'},
+    {'names': ['Isonitrile'], 'image': 'isonitrile.png'},
+    {'names': ['Nitrite'], 'image': 'nitrite.png'},
+    {'names': ['Nitro'], 'image': 'nitro.png'},
+    {'names': ['Nitroso'], 'image': 'nitroso.png'},
+    {'names': ['Carbamate'], 'image': 'carbamate.png'},
+    {'names': ['Thiol'], 'image': 'thiol.png'},
+    {'names': ['Sulfide', 'Thioether'], 'image': 'sulfide.png'},
+    {'names': ['Disulfide'], 'image': 'disulfide.png'},
+    {'names': ['Sulfoxide'], 'image': 'sulfoxide.png'},
+    {'names': ['Sulfone'], 'image': 'sulfone.png'},
+    {'names': ['Thiocyanate'], 'image': 'thiocyanate.png'},
+    {'names': ['Thioester'], 'image': 'thioester.png'},
+    {'names': ['Phosphodiester'], 'image': 'phosphodiester.png'},
 
-    // Continue from here: https://en.wikipedia.org/wiki/Functional_group#:~:text=Butyric%20anhydride-,Groups%20containing%20nitrogen,-%5Bedit%5D
-
     // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-    // {'names': [''], 'image': '.png'},
-
-
-
   ];
 
   Map<String, dynamic>? currentQuestion;
@@ -91,7 +104,7 @@ class _FunctionalGroupsState extends State<FunctionalGroups> {
         // oneInput == currentQuestion!['one']!.toLowerCase();
 
     setState(() {
-      feedback = correct ? "✅ Correct!" : "❌ Try Again!";
+      feedback = correct ? "✅ Correct!" : "❌ Try Again!\n Answer: $validNames";
     });
 
     if (true) {

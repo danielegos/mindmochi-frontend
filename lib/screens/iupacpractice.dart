@@ -73,7 +73,7 @@ class _IupacPracticeState extends State<IupacPractice> {
         // oneInput == currentQuestion!['one']!.toLowerCase();
 
     setState(() {
-      feedback = correct ? "✅ Correct!" : "❌ Try Again!";
+      feedback = correct ? "✅ Correct!" : "❌ Try Again!\n Answer: $validNames";
     });
 
     if (true) {

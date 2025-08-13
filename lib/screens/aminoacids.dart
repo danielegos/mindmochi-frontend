@@ -77,7 +77,7 @@ class _AminoAcidsState extends State<AminoAcids> {
         oneInput == currentQuestion!['one']!.toLowerCase();
 
     setState(() {
-      feedback = correct ? "✅ Correct!" : "❌ Try Again!";
+      feedback = correct ? "✅ Correct!" : "❌ Try Again!\n Answer: $validNames";
     });
 
     // Changed conditional to true so it always resets the question
