@@ -21,7 +21,7 @@ class _IupacPracticeState extends State<IupacPractice> {
     {'names': ['1H-imidazole'], 'image': '1H-imidazole.png'},
     {'names': ['7H-purine'], 'image': '7H-purine.png'},
     {'names': ['Pyrimidine'], 'image': 'Pyrimidine.png'},
-    {'names': ['5-sulfanylpentanoic acid'], 'image': '5-sulfanylpentanoic acid.png'},
+    {'names': ['5-sulfanylpentanoic acid'], 'image': '5-sulfanylpentanoic_acid.png'},
     {'names': ['3,5-dihydroxy-3-methylpentanoate'], 'image': '3,5-dihydroxy-3-methylpentanoate.png'},
 
     // {'names': [''], 'image': '.png'},

@@ -3,18 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Import screens
-import 'screens/cellbiology.dart';
-import 'screens/newscreen.dart';
-import 'screens/api_item.dart';
-import 'screens/api_image.dart';
+// import 'screens/cellbiology.dart';
+// import 'screens/newscreen.dart';
+// import 'screens/api_item.dart';
+// import 'screens/api_image.dart';
 import 'screens/aminoacids.dart';
-import 'screens/cellbiologyminigame.dart';
+// import 'screens/cellbiologyminigame.dart';
 import 'screens/usmedschoolmap.dart';
 import 'screens/functionalgroups.dart';
 import 'screens/iupacpractice.dart';
-
-
-// TODO: Delete the Home and Favorites pages, if you can 
 
 void main() {
   runApp(MyApp());
