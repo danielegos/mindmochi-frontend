@@ -8,26 +8,23 @@ class IupacPractice extends StatefulWidget {
 
 class _IupacPracticeState extends State<IupacPractice> {
   final List<Map<String, dynamic>> iupacExamples = [
-    {'names': ['Glycine'], 'three': 'Gly', 'one': 'G', 'image': 'glycine.png'},
-    {'names': ['Alanine'], 'three': 'Ala', 'one': 'A', 'image': 'alanine.png'},
-    {'names': ['Valine'], 'three': 'Val', 'one': 'V', 'image': 'valine.png'},
-    {'names': ['Leucine'], 'three': 'Leu', 'one': 'L', 'image': 'leucine.png'},
-    {'names': ['Isoleucine'], 'three': 'Ile', 'one': 'I', 'image': 'isoleucine.png'},
-    {'names': ['Serine'], 'three': 'Ser', 'one': 'S', 'image': 'serine.png'},
-    {'names': ['Threonine'], 'three': 'Thr', 'one': 'T', 'image': 'threonine.png'},
-    {'names': ['Cysteine'], 'three': 'Cys', 'one': 'C', 'image': 'cysteine.png'},
-    {'names': ['Methionine'], 'three': 'Met', 'one': 'M', 'image': 'methionine.png'},
-    {'names': ['Phenylalanine'], 'three': 'Phe', 'one': 'F', 'image': 'phenylalanine.png'},
-    {'names': ['Tyrosine'], 'three': 'Tyr', 'one': 'Y', 'image': 'tyrosine.png'},
-    {'names': ['Tryptophan'], 'three': 'Trp', 'one': 'W', 'image': 'tryptophan.png'},
-    {'names': ['Asparagine'], 'three': 'Asn', 'one': 'N', 'image': 'asparagine.png'},
-    {'names': ['Glutamine'], 'three': 'Gln', 'one': 'Q', 'image': 'glutamine.png'},
-    {'names': ['Aspartic acid', 'Aspartate'], 'three': 'Asp', 'one': 'D', 'image': 'aspartate.png'},
-    {'names': ['Glutamic acid', 'Glutamate'], 'three': 'Glu', 'one': 'E', 'image': 'glutamate.png'},
-    {'names': ['Lysine'], 'three': 'Lys', 'one': 'K', 'image': 'lysine.png'},
-    {'names': ['Arginine'], 'three': 'Arg', 'one': 'R', 'image': 'arginine.png'},
-    {'names': ['Histidine'], 'three': 'His', 'one': 'H', 'image': 'histidine.png'},
-    {'names': ['Proline'], 'three': 'Pro', 'one': 'P', 'image': 'proline.png'},
+    {'names': ['1,1-Dibromopentane'], 'image': '1,1-Dibromopentane.png'},
+    {'names': ['4-Chloro-1-butene'], 'image': '4-Chloro-1-butene.png'},
+    {'names': ['3-Ethylhept-3-ene'], 'image': '3-ethylhept-3-ene.png'},
+    {'names': ['But-1-yne'], 'image': 'But-1-yne.png'},
+    {'names': ['5-Methylcyclopenta-1,3-diene'], 'image': '5-methylcyclopenta-1,3-diene.png'},
+    {'names': ['(2R)-4-amino-2-methylbutan-1-ol'], 'image': '(2R)-4-amino-2-methylbutan-1-ol.png'},
+    {'names': ['Phenol'], 'image': 'Phenol.png'},
+    {'names': ['Furan'], 'image': 'Furan.png'},
+    {'names': ['1H-pyrrole'], 'image': '1H-pyrrole.png'},
+    {'names': ['(4R)-2-chloro-1-ethyl-4-methylcyclohexene'], 'image': '(4R)-2-chloro-1-ethyl-4-methylcyclohexene.png'},
+    {'names': ['1H-imidazole'], 'image': '1H-imidazole.png'},
+    {'names': ['7H-purine'], 'image': '7H-purine.png'},
+    {'names': ['Pyrimidine'], 'image': 'Pyrimidine.png'},
+    {'names': ['5-sulfanylpentanoic acid'], 'image': '5-sulfanylpentanoic acid.png'},
+    {'names': ['3,5-dihydroxy-3-methylpentanoate'], 'image': '3,5-dihydroxy-3-methylpentanoate.png'},
+
+    // {'names': [''], 'image': '.png'},
   ];
 
   Map<String, dynamic>? currentQuestion;
@@ -97,9 +94,9 @@ class _IupacPracticeState extends State<IupacPractice> {
             children: [
               Center(
                 child: Image.asset(
-                  'amino_acids/${currentQuestion!['image']}',
+                  'iupac_naming/${currentQuestion!['image']}',
                   width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
-                  height: 200,
+                  height: 450,
                   fit: BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) => Text("Image not found."),
                 ),
